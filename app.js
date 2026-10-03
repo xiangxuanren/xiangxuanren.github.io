@@ -16,7 +16,7 @@ const papers=[
       "Spatial anchors"
     ],
     "category": "Multimodal Large Language Models & World Model",
-    "video": "assets/publications/getok-demo.mp4",
+    "video": "assets/publications/getok-demo.mp4?v=20261004-compressed",
     "poster": "assets/publications/getok.webp"
   },
   {
@@ -54,7 +54,7 @@ const papers=[
       "Data scaling"
     ],
     "category": "Multimodal Large Language Models & World Model",
-    "video": "assets/publications/pixelpilot-demo.mp4",
+    "video": "assets/publications/pixelpilot-demo.mp4?v=20261004-compressed",
     "poster": "assets/publications/pixelpilot-poster.jpg"
   },
   {
@@ -157,7 +157,7 @@ const papers=[
       "Efficient perception"
     ],
     "category": "3D Perception & Autonomous Driving",
-    "video": "assets/publications/sparseocc-demo.mp4",
+    "video": "assets/publications/sparseocc-demo.mp4?v=20261004-compressed",
     "poster": "assets/publications/sparseocc-poster.jpg"
   },
   {
@@ -195,7 +195,7 @@ const papers=[
       "Uncertainty estimation"
     ],
     "category": "3D Perception & Autonomous Driving",
-    "video": "assets/publications/occgen-demo.mp4",
+    "video": "assets/publications/occgen-demo.mp4?v=20261004-compressed",
     "poster": "assets/publications/occgen-poster.jpg"
   },
   {
@@ -274,11 +274,12 @@ for(const category of categories){
   }).join(', ');
   const contributionNote=paper.equalContributors?.length?' <span class="equal-contribution">· * Equal contribution</span>':'';
   const image=paper.image||'assets/publications/'+paper.key+(paper.key==='dualattention'?'.svg':'.webp');
+  const preview=src=>src.endsWith('.svg')?src:'assets/optimized/'+src.split('/').pop().replace(/\.(png|jpg)$/,'.webp');
   const url=paper.paper||paper.project;
   const [imageWidth,imageHeight]=figureSizes[image]||[560,250];
-  const still='<a class="paper-figure" href="'+image+'" target="_blank" rel="noopener" aria-label="View '+escapeHtml(paper.method)+' figure"><img src="'+image+'" alt="'+escapeHtml(paper.method)+(paper.key==='dualattention'?' conceptual method diagram':' method overview')+'" width="'+imageWidth+'" height="'+imageHeight+'" loading="lazy" decoding="async"></a>';
-  const detailFigures=paper.figures?'<div class="paper-figure-pair">'+paper.figures.map(figure=>'<a class="paper-figure" href="'+escapeHtml(figure.src)+'" target="_blank" rel="noopener" aria-label="'+escapeHtml(figure.alt)+'"><img src="'+escapeHtml(figure.src)+'" alt="'+escapeHtml(figure.alt)+'" width="'+figure.width+'" height="'+figure.height+'" loading="lazy" decoding="async"></a>').join('')+'</div>':'';
-  const media=detailFigures?'<div class="paper-media-stack paper-figure-collage">'+still+detailFigures+'</div>':paper.video?'<div class="paper-media-stack">'+still+'<div class="paper-figure paper-video"><video muted loop playsinline controls preload="none" poster="'+escapeHtml(paper.poster)+'" data-src="'+escapeHtml(paper.video)+'" aria-label="'+escapeHtml(paper.method)+' research demonstration"></video></div>'+'</div>':still;
+  const still='<a class="paper-figure" href="'+image+'" target="_blank" rel="noopener" aria-label="View '+escapeHtml(paper.method)+' figure"><img src="'+preview(image)+'" alt="'+escapeHtml(paper.method)+(paper.key==='dualattention'?' conceptual method diagram':' method overview')+'" width="'+imageWidth+'" height="'+imageHeight+'" loading="lazy" decoding="async"></a>';
+  const detailFigures=paper.figures?'<div class="paper-figure-pair">'+paper.figures.map(figure=>'<a class="paper-figure" href="'+escapeHtml(figure.src)+'" target="_blank" rel="noopener" aria-label="'+escapeHtml(figure.alt)+'"><img src="'+escapeHtml(preview(figure.src))+'" alt="'+escapeHtml(figure.alt)+'" width="'+figure.width+'" height="'+figure.height+'" loading="lazy" decoding="async"></a>').join('')+'</div>':'';
+  const media=detailFigures?'<div class="paper-media-stack paper-figure-collage">'+still+detailFigures+'</div>':paper.video?'<div class="paper-media-stack">'+still+'<div class="paper-figure paper-video"><video muted loop playsinline controls preload="none" poster="'+escapeHtml(preview(paper.poster))+'" data-src="'+escapeHtml(paper.video)+'" aria-label="'+escapeHtml(paper.method)+' research demonstration"></video></div>'+'</div>':still;
   item.innerHTML=media+'<div class="paper-content"><h4>'+externalLink(url,escapeHtml(paper.title))+'</h4><p class="authors">'+authors+'</p><p class="venue '+(paper.venue.startsWith('Preprint')?'preprint':'')+'">'+escapeHtml(paper.venue)+contributionNote+'</p><p class="publication-insight">'+escapeHtml(paper.insight)+'</p><div class="publication-keywords" aria-label="Keywords">'+paper.keywords.map(keyword=>'<span class="keyword">'+escapeHtml(keyword)+'</span>').join('')+'</div></div>';
   const video=item.querySelector('video');
   if(video)video.addEventListener('error',()=>{item.querySelector('.paper-video').remove();},{once:true});
