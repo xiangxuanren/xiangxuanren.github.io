@@ -15,15 +15,15 @@
   const beats=[
   {
     "at": 0,
-    "quote": "Perception turns observations into a coherent world.\nIt reveals structure across space and time."
+    "quote": "Intelligence begins with seeing.\nPerception turns observations into structure across space and time."
   },
   {
     "at": 20,
-    "quote": "A shared representation brings perception and language\ninto a common space for thought."
+    "quote": "Seeing is not enough; intelligence needs a way to represent what it sees.\nA shared representation turns perception into a language for thought."
   },
   {
     "at": 32,
-    "quote": "Reasoning gains a spatial dimension\nwhen it can act on and refine what it represents."
+    "quote": "Reasoning should extend beyond language into a visual space it can act on.\nThere, models can reshape what they perceive as they think."
   },
   {
     "at": 46,
@@ -31,7 +31,7 @@
   },
   {
     "at": 62,
-    "quote": "Model a world that keeps unfolding.\nPredict what could happen, and learn through interaction."
+    "quote": "Intelligence goes beyond understanding the world as it is.\nPredict what could happen, and learn through interaction."
   }
 ];
   function node(tag,attrs,parent){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e;}
