@@ -19,11 +19,11 @@
   },
   {
     "at": 20,
-    "quote": "Seeing is not enough; intelligence needs a way to represent what it sees.\nA shared representation turns perception into a language for thought."
+    "quote": "Intelligence needs a way to represent what it sees.\nA shared representation turns perception into a language for thought."
   },
   {
     "at": 32,
-    "quote": "Reasoning should extend beyond language into a visual space it can act on.\nThere, models can reshape what they perceive as they think."
+    "quote": "Reasoning extends from language into a visual space it can act on.\nThere, models can reshape what they perceive as they think."
   },
   {
     "at": 46,
@@ -31,7 +31,7 @@
   },
   {
     "at": 62,
-    "quote": "Intelligence goes beyond understanding the world as it is.\nPredict what could happen, and learn through interaction."
+    "quote": "Intelligence grows by anticipating how the world may unfold.\nPredict what could happen, and learn through interaction."
   }
 ];
   function node(tag,attrs,parent){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e;}
