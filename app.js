@@ -126,13 +126,13 @@ const papers=[
     "category": "Visual Learning & Scene Understanding",
     "figures": [
       {
-        "src": "assets/publications/untrack-modalities.png",
+        "src": "assets/publications/untrack-modalities.webp",
         "alt": "Un-Track uses one parameter set to track with RGB paired with depth, thermal or event inputs (paper Figure 1).",
         "width": 535,
         "height": 443
       },
       {
-        "src": "assets/publications/untrack-transfer.png",
+        "src": "assets/publications/untrack-transfer.webp",
         "alt": "RGBT234 comparison across fast motion, motion blur, occlusion, scale variation, camera motion and background clutter (paper Figure 6).",
         "width": 897,
         "height": 569
@@ -169,7 +169,7 @@ const papers=[
     "paper": "https://doi.org/10.1109/ICRA55743.2025.11127349",
     "key": "bikt",
     "method": "BiKT",
-    "image": "assets/publications/bikt.png",
+    "image": "assets/publications/bikt.webp",
     "insight": "Separating confident and ambiguous pseudo-labels into two supervision streams lets a 3D detector learn from uncertain predictions that confidence filtering would otherwise discard.",
     "keywords": [
       "Semi-supervised 3D detection",
@@ -259,6 +259,8 @@ const fullNames={"X Ren":"Xiangxuan Ren","Z Wang":"Zhongdao Wang","P Tang":"Pin 
 
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));}
 function externalLink(url,label){return '<a href="'+escapeHtml(url)+'" target="_blank" rel="noopener">'+label+'</a>';}
+// Reserve each image's natural aspect ratio before its lazy download finishes.
+const figureSizes={"assets/publications/sparseocc.webp":[1200,418],"assets/publications/litefusion.webp":[1200,565],"assets/publications/untrack-modalities.webp":[535,443],"assets/publications/vlaworld.webp":[1200,579],"assets/publications/untrack.webp":[1160,289],"assets/publications/occtrans.webp":[1200,581],"assets/publications/focusgs.webp":[1200,595],"assets/publications/pixelpilot.webp":[1200,378],"assets/publications/getok.webp":[1200,377],"assets/publications/veon.webp":[1200,521],"assets/publications/occgen.webp":[1200,409],"assets/publications/untrack-transfer.webp":[897,569],"assets/publications/cudam.webp":[1200,647],"assets/publications/bikt.webp":[2412,924],"assets/publications/sparseoccpp.webp":[1200,470]};
 const root=document.getElementById('publication-list');
 const categories=['Multimodal Large Language Models & World Model','3D Perception & Autonomous Driving','Visual Learning & Scene Understanding'];
 for(const category of categories){
@@ -273,7 +275,8 @@ for(const category of categories){
   const contributionNote=paper.equalContributors?.length?' <span class="equal-contribution">· * Equal contribution</span>':'';
   const image=paper.image||'assets/publications/'+paper.key+(paper.key==='dualattention'?'.svg':'.webp');
   const url=paper.paper||paper.project;
-  const still='<a class="paper-figure" href="'+image+'" target="_blank" rel="noopener" aria-label="View '+escapeHtml(paper.method)+' figure"><img src="'+image+'" alt="'+escapeHtml(paper.method)+(paper.key==='dualattention'?' conceptual method diagram':' method overview')+'" width="560" height="250" loading="lazy" decoding="async"></a>';
+  const [imageWidth,imageHeight]=figureSizes[image]||[560,250];
+  const still='<a class="paper-figure" href="'+image+'" target="_blank" rel="noopener" aria-label="View '+escapeHtml(paper.method)+' figure"><img src="'+image+'" alt="'+escapeHtml(paper.method)+(paper.key==='dualattention'?' conceptual method diagram':' method overview')+'" width="'+imageWidth+'" height="'+imageHeight+'" loading="lazy" decoding="async"></a>';
   const detailFigures=paper.figures?'<div class="paper-figure-pair">'+paper.figures.map(figure=>'<a class="paper-figure" href="'+escapeHtml(figure.src)+'" target="_blank" rel="noopener" aria-label="'+escapeHtml(figure.alt)+'"><img src="'+escapeHtml(figure.src)+'" alt="'+escapeHtml(figure.alt)+'" width="'+figure.width+'" height="'+figure.height+'" loading="lazy" decoding="async"></a>').join('')+'</div>':'';
   const media=detailFigures?'<div class="paper-media-stack paper-figure-collage">'+still+detailFigures+'</div>':paper.video?'<div class="paper-media-stack">'+still+'<div class="paper-figure paper-video"><video muted loop playsinline controls preload="none" poster="'+escapeHtml(paper.poster)+'" data-src="'+escapeHtml(paper.video)+'" aria-label="'+escapeHtml(paper.method)+' research demonstration"></video></div>'+'</div>':still;
   item.innerHTML=media+'<div class="paper-content"><h4>'+externalLink(url,escapeHtml(paper.title))+'</h4><p class="authors">'+authors+'</p><p class="venue '+(paper.venue.startsWith('Preprint')?'preprint':'')+'">'+escapeHtml(paper.venue)+contributionNote+'</p><p class="publication-insight">'+escapeHtml(paper.insight)+'</p><div class="publication-keywords" aria-label="Keywords">'+paper.keywords.map(keyword=>'<span class="keyword">'+escapeHtml(keyword)+'</span>').join('')+'</div></div>';

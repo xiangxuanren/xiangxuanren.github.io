@@ -149,16 +149,18 @@
     if(enabled&&ready&&audio?.state==='running'){silence();return;}
     enabled=true;nextPhrase=0;activateAudio(true);
   });
-  // Keep the default-on preference, but unlock only on a real activation gesture.
+  // Try on arrival; if blocked, retry directly inside the first trusted gesture.
   function unlockFromGesture(e){
     if(!e.isTrusted||soundButton.contains(e.target)||e.repeat)return;
     if(e.type==='pointerdown'&&e.pointerType!=='mouse')return;
-    if(enabled&&(!ready||audio?.state!=='running'))activateAudio();
+    if(enabled&&(!ready||audio?.state!=='running'))activateAudio(true);
   }
   document.addEventListener('pointerdown',unlockFromGesture,{capture:true});
   document.addEventListener('pointerup',unlockFromGesture,{capture:true});
   document.addEventListener('click',unlockFromGesture,{capture:true});
   document.addEventListener('keydown',unlockFromGesture,{capture:true});
-  document.addEventListener('visibilitychange',()=>{leaveAll();if(document.hidden){cancelAnimationFrame(raf);raf=0;quietAudio();}else{wake();if(enabled&&audio)activateAudio();}});
+  document.addEventListener('visibilitychange',()=>{leaveAll();if(document.hidden){cancelAnimationFrame(raf);raf=0;quietAudio();}else{wake();if(enabled)activateAudio(phraseNumber===0);}});
   window.addEventListener('pagehide',quietAudio);
+  // Allow the hero to paint before preparing the procedural instrument.
+  requestAnimationFrame(()=>setTimeout(()=>{if(enabled&&!ready)activateAudio(true);},0));
 })();
