@@ -6,7 +6,9 @@
   const names=hosts.map(host=>{
     const label=host.querySelector('.name-label'),letters=document.createElement('span');
     letters.className='name-letters';letters.setAttribute('aria-hidden','true');
-    const glyphs=Array.from(label.textContent,c=>{
+    // Keep handwritten words intact so shaping and thin strokes survive animation.
+    const units=host.classList.contains('tagline-name')?label.textContent.split(/(\s+)/).filter(Boolean):Array.from(label.textContent);
+    const glyphs=units.map(c=>{
       const el=document.createElement('span');el.className='name-letter';el.textContent=c;letters.append(el);
       return {el,y:0,v:0,angle:0,angularV:0,center:0};
     });
@@ -32,8 +34,9 @@
         g.v+=(target-g.y)*.028*dt;g.v*=Math.pow(.84,dt);g.y+=g.v*dt;
         g.angularV+=(tilt-g.angle)*.023*dt;g.angularV*=Math.pow(.83,dt);g.angle+=g.angularV*dt;
         if(Math.abs(g.y-target)>.015||Math.abs(g.v)>.015||Math.abs(g.angle-tilt)>.015||Math.abs(g.angularV)>.015)unsettled=true;
-        g.el.style.transform=`translate3d(0,${g.y.toFixed(3)}px,0) rotate(${g.angle.toFixed(3)}deg)`;
+        g.el.style.transform=`translateY(${g.y.toFixed(3)}px) rotate(${g.angle.toFixed(3)}deg)`;
       });
+      if(!n.active&&!unsettled)n.glyphs.forEach(g=>{g.y=g.v=g.angle=g.angularV=0;g.el.style.transform='none';});
       n.energy*=Math.pow(.95,dt);
       n.host.dataset.motion=n.active?'resonating':unsettled?'settling':'still';
       moving=moving||n.active||unsettled;

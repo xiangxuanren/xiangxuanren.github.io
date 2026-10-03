@@ -10,7 +10,7 @@
 .hero h1{font-size:clamp(56px,8.4vw,112px);font-weight:700;letter-spacing:-.057em;line-height:1.13;color:#20211f}
 .resonant-name{position:relative;display:inline-block;white-space:nowrap;cursor:default;touch-action:pan-y}
 .name-letters{display:inline-block;white-space:pre}
-.name-letter{display:inline-block;transform-origin:50% 85%;will-change:transform}
+.name-letter{display:inline-block;transform-origin:50% 85%;overflow:visible}
 .resonant-name.is-ready .name-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .hero-sound{position:absolute;right:0;top:23px;border:0;border-bottom:1px solid #aec6cf;background:transparent;color:#607b88;padding:3px 0 5px;font-size:12px;display:flex;align-items:center;gap:7px}
 .hero-sound:hover{color:var(--ink)}.hero-sound[aria-pressed=true]{color:var(--blue)}.sound-mark{font-family:serif;font-size:17px;line-height:1}
