@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <title>Xiangxuan Ren — A Curious Line</title>
+  <meta name="description" content="Xiangxuan Ren, Ph.D. candidate at Shanghai Jiao Tong University. Multimodal learning, visual reasoning, spatial intelligence, and a little curiosity.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23fbfaf7'/%3E%3Cpath d='M6 11v-5h5M21 6h5v5M26 21v5h-5M11 26H6v-5' fill='none' stroke='%23242422' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='13' cy='16' r='1.5'/%3E%3Ccircle cx='20' cy='16' r='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="story.css">
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="academic.css">
+  <script src="app.js" defer></script>
+  <script src="story.js" defer></script>
+  <script src="hero.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#publications">Skip to publications</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top" aria-label="Xiangxuan Ren, home">xr<span class="logo-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="#about">About me</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#collaborators">Collaborators</a></nav>
+  </header>
+  <main>
+    <section class="hero" id="top" aria-labelledby="name">
+      <div class="hero-atmosphere" aria-hidden="true"><img class="sky-cloud sky-cloud-a" src="assets/hero-cloud.svg" alt=""><img class="sky-cloud sky-cloud-b" src="assets/hero-cloud.svg" alt=""><img class="sky-cloud sky-cloud-c" src="assets/hero-cloud.svg" alt=""></div>
+      <div class="hero-copy wrap"><button class="hero-sound" type="button" aria-label="Mute title melody" aria-pressed="true" title="A quiet melody as you move across the name"><span class="sound-mark" aria-hidden="true">♫</span><span class="sound-text">Sound on</span></button><span class="hello resonant-name"><span class="name-label">Hello, I'm</span></span><h1 id="name"><span class="resonant-name"><span class="name-label">Xiangxuan Ren</span></span><span class="resonant-name chinese-name" lang="zh"><span class="name-label">任相璇</span></span></h1>
+        <span class="title-hint"><span class="resonant-name tagline-name"><span class="name-label">A little curiosity goes a little way.</span></span></span>
+        <p class="hero-bio">Ph.D. candidate at Institute of AI, Shanghai Jiao Tong University</p>
+        <div class="hero-links"><a href="https://scholar.google.com/citations?user=P20Rk5oAAAAJ" target="_blank" rel="noopener">Google Scholar</a><span aria-hidden="true">/</span><a href="mailto:bunny_renxiangxuan@sjtu.edu.cn">Email</a><span aria-hidden="true">/</span><a href="#about">A bit about me</a></div>
+      </div>
+      <div class="scene-shell" id="research-story">
+        <div class="scene" role="group" aria-label="A walking research journey. Lanes, 3D objects, occupied space and temporal identity become grounded thought, relational understanding and a vision of a revisable internal world. The garden accumulates understanding while the research vignette and related papers change together.">
+          <img class="opening-house" src="assets/building.svg" alt="" aria-hidden="true"><img class="opening-tree" src="assets/tree.svg" alt="" aria-hidden="true"><img class="opening-car" src="assets/car.svg" alt="" aria-hidden="true">
+          <div class="journey-thought"><p id="journey-quote">Perception turns observations into a coherent world.<br>It reveals structure across space and time.</p><span class="thought-tail" aria-hidden="true"></span></div>
+          <svg class="concept-journey" viewBox="0 0 1000 280" role="img" aria-label="One continuous garden scene: see a cat, flowers and a car; ground language in those same objects; discover spatial and interaction relations; connect them into a world that can be imagined and revised"></svg>
+          <div class="observer-actor" aria-hidden="true"><div class="observer-gaze"><div class="walker-pose"><img class="observer observer-body" src="assets/observer.png" alt=""><img class="observer-leg leg-back" src="assets/observer.png" alt=""><img class="observer-leg leg-front" src="assets/observer.png" alt=""><span class="curious-spark">?</span></div></div></div><div class="world-question" aria-hidden="true"><span>Imagine worlds<br>that respond.</span></div>
+          <div class="scene-ground" aria-hidden="true"><svg class="ground-arrow" viewBox="0 0 24 18" focusable="false"><path d="M5 2 Q13 6 21 9 Q13 12 5 16"/></svg></div><div class="journey-ink" aria-hidden="true"></div>
+          <div class="story-timeline" aria-label="Explore the research story"><button type="button" data-chapter="0" aria-pressed="true"><span class="chapter-label">Seeing</span></button><button type="button" data-chapter="1" aria-pressed="false"><span class="chapter-label">Thinking</span></button><button type="button" data-chapter="2" aria-pressed="false"><span class="chapter-label">Understanding</span></button><button type="button" data-chapter="3" aria-pressed="false"><span class="chapter-label">World</span> <span class="chapter-label">Intelligence</span></button></div>
+          <div class="research-canvas" aria-label="Current research animation and related papers">
+            <figure class="idea idea-time"><svg viewBox="0 0 180 125" aria-label="Lane geometry, 3D boxes, occupied space and identity over time describe one shared scene"></svg><figcaption><strong>Perception, across tasks</strong><span class="paper-context">Lanes, objects, anomalies, occupied space and identity over time.</span><span class="related-papers"><span class="paper-insight">Recover geometry and identity across sensors and time, so observations fit one evolving scene.</span></span></figcaption><div class="stage-methods" aria-label="Seeing research methods"><span class="methods-label">Seeing</span><div class="method-links"><a href="https://doi.org/10.1109/ICIP42928.2021.9506296" target="_blank" rel="noopener" title="Robust Monocular 3D Lane Detection with Dual Attention">Dual Attention (3D lanes)</a><a href="https://doi.org/10.1109/TIV.2022.3204714" target="_blank" rel="noopener" title="Curiosity-Driven Attention for Anomaly Road Obstacles Segmentation in Autonomous Driving">CuDAM</a><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=P20Rk5oAAAAJ&amp;citation_for_view=P20Rk5oAAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener" title="Attention-Based Radar and Camera Fusion for Object Detection in Severe Conditions">Radar–camera attention</a><a href="https://arxiv.org/abs/2311.15851" target="_blank" rel="noopener" title="Single-Model and Any-Modality for Video Object Tracking">Un-Track</a><a href="https://arxiv.org/abs/2404.09502" target="_blank" rel="noopener" title="SparseOcc: Rethinking Sparse Latent Representation for Vision-Based Semantic Occupancy Prediction">SparseOcc</a><a href="https://arxiv.org/abs/2404.15014" target="_blank" rel="noopener" title="OccGen: Generative Multi-modal 3D Occupancy Prediction for Autonomous Driving">OccGen</a><a href="https://arxiv.org/abs/2407.12294" target="_blank" rel="noopener" title="VEON: Vocabulary-Enhanced Occupancy Prediction">VEON</a><a href="https://arxiv.org/abs/2512.20217" target="_blank" rel="noopener" title="LiteFusion: Taming 3D Object Detectors from Vision-Based to Multi-Modal with Minimal Adaptation">LiteFusion</a></div></div></figure>
+            <figure class="idea idea-grid"><svg viewBox="0 0 180 125" aria-label="Spatial anchors link visual locations with language through one shared token vocabulary"></svg><figcaption><strong>GETok</strong><span class="paper-context">Grounding Everything in Tokens for Multimodal Large Language Models</span><span class="related-papers"><a href="https://arxiv.org/abs/2512.10554">CVPR 2026 · Read paper</a><span class="paper-insight">Spatial anchors and a unified token vocabulary let language express visual locations.</span></span></figcaption><div class="stage-methods" aria-label="Thinking research methods"><span class="methods-label">Thinking</span><div class="method-links"><a href="https://arxiv.org/abs/2512.10554" target="_blank" rel="noopener" title="Grounding Everything in Tokens for Multimodal Large Language Models">GETok</a><span title="Making Localization Thinkable: Grounding Actions as Thought Primitives">ThinkAxis</span></div></div></figure>
+            <figure class="idea idea-action"><svg viewBox="0 0 180 125" aria-label="Delete an incorrect box, add a target box, then move its boundary using evidence"></svg><figcaption><strong>ThinkAxis</strong><span class="paper-context">Making Localization Thinkable: Grounding Actions as Thought Primitives</span><span class="related-papers"><span class="paper-insight">Recognition is not precise localization. Delete, add and move boxes as steps of reasoning.</span></span></figcaption><div class="stage-methods" aria-label="Thinking research methods"><span class="methods-label">Thinking</span><div class="method-links"><a href="https://arxiv.org/abs/2512.10554" target="_blank" rel="noopener" title="Grounding Everything in Tokens for Multimodal Large Language Models">GETok</a><span title="Making Localization Thinkable: Grounding Actions as Thought Primitives">ThinkAxis</span></div></div></figure>
+            <figure class="idea idea-relation"><svg viewBox="0 0 180 125" aria-label="Spatial reasoning connects reference frames, metric relations, occlusion and reachability"></svg><figcaption><strong>Reasoning about space</strong><span class="paper-context">Spatial reasoning and reconstruction beyond the visible surface.</span><span class="related-papers"><span class="paper-insight">SpaceVars selects question-relevant spatial structure; FocusGS completes geometry in ambiguous regions.</span></span></figcaption><div class="stage-methods" aria-label="Understanding research methods"><span class="methods-label">Understanding</span><div class="method-links"><a href="https://arxiv.org/abs/2607.04637" target="_blank" rel="noopener" title="PixelPilot: Scalable Vision-Language-Action Models for End-to-End Autonomous Driving">PixelPilot</a><a href="https://arxiv.org/abs/2607.04661" target="_blank" rel="noopener" title="Targeted Structure Completion for Sparse-View 3D Reconstruction in Autonomous Driving">FocusGS</a><span title="SpaceVars">SpaceVars</span></div></div></figure>
+            <figure class="idea idea-world"><svg viewBox="0 0 240 125" aria-label="A future internal world model integrates partial observations, persistent state, relational constraints and possible interventions"></svg><figcaption><strong>World Intelligence</strong><span class="paper-context">Learning Vision-Language-Action World Models for Autonomous Driving</span><span class="related-papers"><a href="https://arxiv.org/abs/2604.09059">VLA-World · Read paper</a><span class="paper-insight">Imagine a future scene, then reason over that prediction to refine the next action.</span></span></figcaption><div class="stage-methods" aria-label="World Intelligence research methods"><span class="methods-label">World Intelligence</span><div class="method-links"><a href="https://arxiv.org/abs/2604.09059" target="_blank" rel="noopener" title="Learning Vision-Language-Action World Models for Autonomous Driving">VLA-World</a><span title="WorldAgent">WorldAgent</span></div></div></figure>
+          </div>
+
+        </div>
+        <div class="story-footer wrap"><div class="story-controls"><button type="button" id="toggle-story" aria-label="Pause research animation">Pause</button><button type="button" id="restart-story" aria-label="Restart research animation">Replay</button></div></div>
+      </div>
+    </section>
+    <div class="academic-body wrap">
+      <section class="academic-section academic-about" id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading"><span class="section-icon" aria-hidden="true">🌿</span>About me</h2>
+        <figure class="about-portrait"><img src="assets/about/xiangxuan-ren.jpg" alt="Xiangxuan Ren smiling by a lake" width="1800" height="1200" loading="lazy" decoding="async"></figure>
+        <div class="about-main">
+          <p>I am a Ph.D. candidate in Computer Science and Technology at the <a href="https://ai.sjtu.edu.cn/" target="_blank" rel="noopener">Institute of AI</a>, <a href="https://www.sjtu.edu.cn/" target="_blank" rel="noopener">Shanghai Jiao Tong University</a>, advised by <a href="https://vision.sjtu.edu.cn/" target="_blank" rel="noopener">Prof. Chao Ma</a>. I began my doctoral studies in April 2023 and expect to graduate in June 2027.</p>
+          <p id="research">I study how intelligent systems build coherent representations of the physical world from visual observations, connect these representations with language, and use them to reason and act. My work spans vision-language models (VLMs), 3D perception, and world modeling, with the aim of advancing spatial intelligence: grounding language in visual space, reasoning about spatial structure, and modeling how the world evolves.</p>
+          <p>I received my master’s degree from Shanghai Jiao Tong University’s <a href="https://airc.sjtu.edu.cn/" target="_blank" rel="noopener">Artificial Intelligence and Robotics Center</a> (September 2020–March 2023), advised by <a href="https://sais.sjtu.edu.cn/faculty/zhangweidong.html" target="_blank" rel="noopener">Prof. Weidong Zhang</a>. Before that, I earned my bachelor’s degree in Automation from the <a href="https://www.uestc.edu.cn/" target="_blank" rel="noopener">University of Electronic Science and Technology of China</a> (September 2016–June 2020).</p>
+          <p>My research experience also includes Huawei Noah’s Ark Lab, where I worked on multimodal large language models and autonomous driving.</p>
+        </div>
+      </section>
+      <section class="academic-section academic-news" id="news" aria-labelledby="news-heading">
+        <h2 id="news-heading"><span class="section-icon" aria-hidden="true">🔥</span>News</h2>
+        <div class="news-scroll" role="region" aria-label="Recent research news" tabindex="0">
+        <ul class="news-list">
+          <li><time datetime="2026-09">2026.09</time>: <span class="news-event-icon" aria-hidden="true">🎉</span> <a href="https://scholar.google.com/citations?user=P20Rk5oAAAAJ" target="_blank" rel="noopener">WorldAgent</a>, our paper on vision-language-action models, was accepted to <strong>NeurIPS 2026</strong>.</li>
+          <li><time datetime="2026-06">2026.06</time>: <span class="news-event-icon" aria-hidden="true">🎉</span> Two papers accepted to <strong>ECCV 2026</strong>: <a href="#paper-pixelpilot">PixelPilot</a> on scalable vision-language-action learning and <a href="#paper-focusgs">FocusGS</a> on sparse-view 3D reconstruction.</li>
+          <li><time datetime="2026-03">2026.03</time>: <span class="news-event-icon" aria-hidden="true">🎉</span> Our occupancy world model <a href="#paper-occtrans">OccTrans</a> was accepted to <strong>ICME 2026 (Oral)</strong>.</li>
+          <li><time datetime="2026-02">2026.02</time>: <span class="news-event-icon" aria-hidden="true">🎉</span> <a href="#paper-getok">GETok</a>, our unified spatial vocabulary for multimodal grounding, was accepted to <strong>CVPR 2026</strong>; <a href="#paper-vlaworld">VLA-World</a> to <strong>CVPR 2026 Findings</strong>.</li>
+          <li><time datetime="2025-12">2025.12</time>: <span class="news-event-icon" aria-hidden="true">🚀</span> <a href="#paper-litefusion">LiteFusion</a> is online: enhancing camera-based 3D detection with LiDAR geometry and minimal adaptation.</li>
+          <li><time datetime="2024">2024</time>: <span class="news-event-icon" aria-hidden="true">🎉</span> <a href="#paper-occgen">OccGen</a> on generative occupancy prediction and <a href="#paper-veon">VEON</a> on open-vocabulary 3D perception were accepted to <strong>ECCV 2024</strong>.</li>
+          <li><time datetime="2024-02">2024.02</time>: <span class="news-event-icon" aria-hidden="true">🎉</span> <a href="#paper-sparseocc">SparseOcc</a> and <a href="#paper-untrack">Un-Track</a> were accepted to <strong>CVPR 2024</strong>, advancing sparse 3D perception and unified multimodal tracking.</li>
+        </ul>
+        </div>
+      </section>
+      <section class="academic-section academic-publications" id="publications" aria-labelledby="pub-heading">
+        <div class="academic-heading"><h2 id="pub-heading"><span class="section-icon" aria-hidden="true">📚</span>Selected Publications</h2><a href="https://scholar.google.com/citations?user=P20Rk5oAAAAJ&amp;pagesize=100" target="_blank" rel="noopener">Full publication list</a></div>
+        <div id="publication-list"></div>
+        <noscript><p>View all publications on <a href="https://scholar.google.com/citations?user=P20Rk5oAAAAJ">Google Scholar</a>.</p></noscript>
+      </section>
+      <section class="academic-section" id="academic-service" aria-labelledby="service-heading" hidden>
+        <h2 id="service-heading"><span class="section-icon" aria-hidden="true">🎓</span>Academic Service</h2><div id="academic-service-list"></div>
+      </section>
+      <section class="academic-section academic-collaborators" id="collaborators" aria-labelledby="collaborators-heading">
+        <h2 id="collaborators-heading"><span class="section-icon" aria-hidden="true">🤝</span>Partners &amp; Collaborators</h2>
+        <p class="collaborator-inline">I have collaborated closely with <a href="https://zhongdao.github.io/" target="_blank" rel="noopener">Dr. Zhongdao Wang</a> &middot; <a href="https://wgqtmac.github.io/" target="_blank" rel="noopener">Dr. Guoqing Wang</a> &middot; <a href="https://scholar.google.com/citations?user=au87GKsAAAAJ" target="_blank" rel="noopener">Dr. Pin Tang</a> &middot; <a href="https://scholar.google.com/citations?user=3QSALjX498QC" target="_blank" rel="noopener">Dr. Zongwei Wu</a> &middot; <span>Dr. Jilai Zheng</span>.</p>
+        <p>I am sincerely grateful to my advisor and collaborators for their generous guidance and support, encouragement, trust, and companionship through the challenges of research. Their perspectives and support have shaped my growth both as a researcher and as a person. I cherish the experience of learning from one another and growing together.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer wrap"><span>© 2026 Xiangxuan Ren</span><span class="academic-updated">Last updated: October 2026</span><a href="#top">Back to top</a></footer>
+</body>
+</html>

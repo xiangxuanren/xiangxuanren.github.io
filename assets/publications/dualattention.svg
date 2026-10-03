@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" role="img" aria-labelledby="title desc">
+<title id="title">Dual Attention: conceptual method summary</title>
+<desc id="desc">Top-view features pass through lane-to-lane attention and longitudinal pixel-wise attention; their features are aggregated for 3D lane prediction, with linear-interpolation supervision.</desc>
+<rect width="700" height="340" fill="white"/>
+<g font-family="Arial,sans-serif" text-anchor="middle" fill="#33424a">
+<text x="350" y="34" font-size="20" font-weight="600">Dual Attention for 3D lane detection</text>
+<g stroke-width="1.5"><rect x="23" y="113" width="130" height="100" rx="5" fill="#edf2f4" stroke="#a0b3bc"/><rect x="209" y="68" width="230" height="70" rx="5" fill="#eaf1eb" stroke="#95b09b"/><rect x="209" y="179" width="230" height="70" rx="5" fill="#eaf1eb" stroke="#95b09b"/><rect x="500" y="113" width="178" height="100" rx="5" fill="#f3ede2" stroke="#bdaa83"/></g>
+<g font-size="17"><text x="88" y="154">Top-view</text><text x="88" y="179">features</text><text x="324" y="98">Lane-to-lane</text><text x="324" y="121">attention</text><text x="324" y="209">Longitudinal</text><text x="324" y="232">pixel-wise attention</text><text x="589" y="148">Feature aggregation</text><text x="589" y="183">3D lane prediction</text></g>
+<g fill="none" stroke="#7b8c93" stroke-width="2"><path d="M153 163H179V103H209M179 163V214H209M439 103H468V163H500M439 214H468V163"/></g>
+<text x="350" y="288" font-size="16">Linear-interpolation loss for dense lane supervision</text>
+<text x="350" y="321" font-size="12" fill="#848b8e">Conceptual summary redrawn from the paper · ICIP 2021</text>
+</g></svg>
