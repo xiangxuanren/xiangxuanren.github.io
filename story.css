@@ -42,7 +42,7 @@
 
 /* The final chapter names the ambition; keep its full name readable on small screens. */
 .world-question{left:78%;width:220px;font-size:23px}.world-question::after{left:64%}.journey-thought{width:min(800px,90%)}
-@media(max-width:650px){.world-question{left:57%;width:155px;top:129px;font-size:16px;white-space:normal}.world-question::after{left:78%;top:25px}.journey-thought{width:92%}.story-timeline{height:48px;align-items:flex-start}.story-timeline button{font-size:clamp(16px,4.5vw,19px);padding:2px;line-height:1.05}.story-timeline button:last-child span{display:block}.research-canvas{top:435px}.scene{height:669px}}
+@media(max-width:650px){.world-question{left:57%;width:155px;top:129px;font-size:16px;white-space:normal}.world-question::after{left:78%;top:25px}.journey-thought{width:92%}.story-timeline{height:48px;align-items:flex-start}.story-timeline button{font-size:clamp(16px,4.5vw,19px);padding:2px;line-height:1.05}.research-canvas{top:435px}.scene{height:669px}}
 @media(max-width:360px){.scene{height:700px}.world-question{left:54%;width:140px;font-size:16px}}
 
 /* Research philosophy above; concrete contributions beside each paper below. */
@@ -125,6 +125,7 @@
 .story-timeline button:nth-child(3){--marker:#b6d5b2}
 .story-timeline button:nth-child(4){--marker:#d2c1e7}
 .chapter-label{display:inline;white-space:nowrap}
+.story-timeline button{white-space:nowrap}
 .story-timeline button::before{content:'';position:absolute;z-index:-1;inset:3px 0;background:var(--marker);opacity:.38;border-radius:0;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 36' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M4 6 Q42 3 82 5 T159 4 T235 5 L295 3 292 10 298 12 294 29 Q247 33 205 30 T121 32 T39 30 L3 32 6 23 1 21Z'/%3E%3Cpath stroke='black' opacity='.35' stroke-width='2' fill='none' d='M8 3 Q81 1 156 3 T292 2 M8 34 Q80 31 159 34 T288 32'/%3E%3C/svg%3E");mask-size:100% 100%;mask-repeat:no-repeat;transition:opacity .75s ease;pointer-events:none}
 .story-timeline button.is-complete{opacity:1;color:#404b42}
 .story-timeline button.is-complete::before{opacity:.5}
@@ -133,8 +134,8 @@
 .story-timeline button:focus-visible{outline:1.5px dashed #60796e;outline-offset:5px;border-radius:4px}
 .scene-ground{right:18px}
 .ground-arrow{position:absolute;right:-1px;top:-9px;width:24px;height:18px;overflow:visible;fill:none;stroke:#55564d;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:1000px) and (min-width:651px){.story-timeline{height:40px;gap:8px}.story-timeline button,.story-timeline button:nth-child(2n){font-size:16px;height:40px;min-height:40px;padding:0 5px}.story-timeline button:last-child .chapter-label{display:block}}
-@media(max-width:650px){.story-timeline{left:3%;right:3%;height:80px;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}.scene{height:692px}.research-canvas{top:382px}.story-timeline button,.story-timeline button:nth-child(2n){font-size:clamp(14px,3.85vw,16px);height:36px;min-height:36px;padding:0 4px;line-height:1.2;width:100%}.story-timeline button:last-child .chapter-label{display:inline}.scene-ground{right:13px}.ground-arrow{width:20px;height:16px;top:-8px}}
+@media(max-width:1000px) and (min-width:651px){.story-timeline{height:40px;gap:8px}.story-timeline button,.story-timeline button:nth-child(2n){font-size:clamp(13px,1.65vw,16px);height:40px;min-height:40px;padding:0 5px}}
+@media(max-width:650px){.story-timeline{left:3%;right:3%;height:80px;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}.scene{height:692px}.research-canvas{top:382px}.story-timeline button,.story-timeline button:nth-child(2n){font-size:clamp(14px,3.85vw,16px);height:36px;min-height:36px;padding:0 4px;line-height:1.2;width:100%}.scene-ground{right:13px}.ground-arrow{width:20px;height:16px;top:-8px}}
 @media(prefers-reduced-motion:reduce){.story-timeline button,.story-timeline button::before{transition:none}}
 
 @media(max-width:360px){.scene{height:762px}}
