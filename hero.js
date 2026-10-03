@@ -71,12 +71,20 @@
   ];
   const soundButton=document.querySelector('.hero-sound'),soundText=soundButton.querySelector('.sound-text');
   const AudioEngine=window.AudioContext||window.webkitAudioContext;
-  let audio=null,master=null,reverb=null,dry=null,enabled=!!AudioEngine,nextPhrase=0,phraseNumber=0,offTimer=0;
+  let audio=null,master=null,reverb=null,dry=null,enabled=!!AudioEngine,nextPhrase=0,phraseNumber=0,offTimer=0,activation=0,ready=false;
   const voices=new Set();
-  if(!AudioEngine){soundButton.disabled=true;soundButton.setAttribute('aria-pressed','false');soundButton.setAttribute('aria-label','Title melody unavailable');soundText.textContent='Sound unavailable';}
+  function updateSoundControl(){
+    const playing=enabled&&ready&&audio?.state==='running';
+    soundButton.disabled=!AudioEngine;
+    soundButton.dataset.audioState=audio?.state||'locked';
+    soundButton.setAttribute('aria-pressed',String(playing));
+    soundButton.setAttribute('aria-label',!AudioEngine?'Title melody unavailable':playing?'Mute title melody':'Enable title melody');
+    soundText.textContent=!AudioEngine?'Sound unavailable':playing?'Sound on':enabled?'Sound on · tap to start':'Sound off';
+  }
+  updateSoundControl();
   function initAudio(){
     audio=new AudioEngine();
-    const reportState=()=>{soundButton.dataset.audioState=audio.state;};
+    const reportState=()=>{if(audio.state!=='running')ready=false;updateSoundControl();};
     audio.addEventListener('statechange',reportState);reportState();
     master=audio.createGain();master.gain.value=0;
     const filter=audio.createBiquadFilter();filter.type='lowpass';filter.frequency.value=4200;filter.Q.value=.4;
@@ -114,31 +122,40 @@
     if(audio&&master){master.gain.cancelScheduledValues(audio.currentTime);master.gain.setTargetAtTime(0,audio.currentTime,.12);offTimer=setTimeout(()=>{if(!enabled||document.hidden){voices.forEach(v=>{try{v.stop();}catch{}});audio.suspend().catch(()=>{});}},650);}
   }
   function silence(){
-    enabled=false;soundButton.setAttribute('aria-pressed','false');soundButton.setAttribute('aria-label','Enable title melody');soundText.textContent='Sound off';quietAudio();
+    enabled=false;ready=false;activation++;updateSoundControl();quietAudio();
   }
-  async function activateAudio(){
+  async function activateAudio(preview=false){
     if(!enabled||!AudioEngine||document.hidden)return;
+    const request=++activation;
     try{
-      clearTimeout(offTimer);if(!audio)initAudio();await audio.resume();
-      // A pending browser resume must not undo a later mute or hidden-tab pause.
+      clearTimeout(offTimer);if(!audio)initAudio();
+      // Call resume directly within the trusted gesture, before awaiting it.
+      await audio.resume();
+      if(request!==activation)return;
       if(!enabled||document.hidden){quietAudio();return;}
+      if(audio.state!=='running'){updateSoundControl();return;}
+      ready=true;updateSoundControl();
       master.gain.cancelScheduledValues(audio.currentTime);master.gain.setTargetAtTime(.22,audio.currentTime,.35);
       const active=names.find(n=>n.active);
       if(active)playPhrase(active.x/active.host.getBoundingClientRect().width);
-    }catch{if(enabled){silence();soundText.textContent='Try sound again';}}
+      else if(preview)playPhrase(.5);
+    }catch{if(request===activation){ready=false;updateSoundControl();}}
   }
   soundButton.addEventListener('click',()=>{
-    if(enabled){silence();return;}
-    enabled=true;nextPhrase=0;soundButton.setAttribute('aria-pressed','true');soundButton.setAttribute('aria-label','Mute title melody');soundText.textContent='Sound on';activateAudio();
+    // A default-on preference is not proof that the browser has unlocked audio.
+    if(enabled&&ready&&audio?.state==='running'){silence();return;}
+    enabled=true;nextPhrase=0;activateAudio(true);
   });
-  // Default-on preference; actual playback waits for browser-authorized interaction.
+  // Keep the default-on preference, but unlock only on a real activation gesture.
   function unlockFromGesture(e){
     if(!e.isTrusted||soundButton.contains(e.target)||e.repeat)return;
-    if(enabled&&(!audio||audio.state!=='running'))activateAudio();
+    if(e.type==='pointerdown'&&e.pointerType!=='mouse')return;
+    if(enabled&&(!ready||audio?.state!=='running'))activateAudio();
   }
   document.addEventListener('pointerdown',unlockFromGesture,{capture:true});
+  document.addEventListener('pointerup',unlockFromGesture,{capture:true});
+  document.addEventListener('click',unlockFromGesture,{capture:true});
   document.addEventListener('keydown',unlockFromGesture,{capture:true});
-  names.forEach(n=>n.host.addEventListener('pointerenter',()=>{if(enabled&&(!audio||audio.state!=='running'))activateAudio();}));
   document.addEventListener('visibilitychange',()=>{leaveAll();if(document.hidden){cancelAnimationFrame(raf);raf=0;quietAudio();}else{wake();if(enabled&&audio)activateAudio();}});
   window.addEventListener('pagehide',quietAudio);
 })();
