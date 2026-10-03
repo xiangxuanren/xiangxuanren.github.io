@@ -51,7 +51,7 @@
       if(e.pointerType==='touch'&&!e.buttons)return;
       const now=performance.now(),r=n.host.getBoundingClientRect();n.x=e.clientX-r.left;
       n.energy=Math.min(1,Math.abs(n.x-n.lastX)/Math.max(16,now-n.lastMove));n.lastMove=now;n.lastX=n.x;
-      n.active=true;wake();playPhrase(n.x/r.width);
+      n.active=true;wake();
     }
     n.host.addEventListener('pointermove',move);n.host.addEventListener('pointerdown',move);
     n.host.addEventListener('pointerleave',()=>leave(n));n.host.addEventListener('pointercancel',()=>leave(n));
@@ -81,7 +81,7 @@
     soundButton.disabled=!AudioEngine;
     soundButton.dataset.audioState=audio?.state||'locked';
     soundButton.setAttribute('aria-pressed',String(playing));
-    soundButton.setAttribute('aria-label',!AudioEngine?'Title melody unavailable':playing?'Mute title melody':'Enable title melody');
+    soundButton.setAttribute('aria-label',!AudioEngine?'Homepage melody unavailable':playing?'Mute homepage melody':'Enable homepage melody');
     soundText.textContent=!AudioEngine?'Sound unavailable':playing?'Sound on':enabled?'Sound on · tap to start':'Sound off';
   }
   updateSoundControl();
@@ -119,7 +119,24 @@
     const pan=(movement-.5)*.36;
     phrase.forEach((m,i)=>note(m,start+[0,.23,.51][i],[.084,.066,.073][i],pan+(i%2?.045:-.045)));
     soundButton.dataset.phrases=String(phraseNumber);
+    return true;
   }
+  // One instrument across the opening page, including the complete research canvas.
+  // Movement is measured in pixels so stationary pointers and tiny jitter stay quiet.
+  let pointer=null,travel=0;
+  function exploreSound(e){
+    if(e.pointerType==='touch'||soundButton.contains(e.target)||!enabled||document.hidden)return;
+    if(pointer)travel=Math.min(80,travel+Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y));
+    pointer={x:e.clientX,y:e.clientY};
+    if(travel<12)return;
+    const bounds=e.currentTarget.getBoundingClientRect();
+    if(playPhrase((e.clientX-bounds.left)/bounds.width))travel=0;
+  }
+  document.querySelectorAll('.hero,.site-header').forEach(surface=>{
+    surface.addEventListener('pointermove',exploreSound,{passive:true});
+    surface.addEventListener('pointerleave',()=>{pointer=null;travel=0;},{passive:true});
+    surface.addEventListener('pointercancel',()=>{pointer=null;travel=0;},{passive:true});
+  });
   function quietAudio(){
     clearTimeout(offTimer);
     if(audio&&master){master.gain.cancelScheduledValues(audio.currentTime);master.gain.setTargetAtTime(0,audio.currentTime,.12);offTimer=setTimeout(()=>{if(!enabled||document.hidden){voices.forEach(v=>{try{v.stop();}catch{}});audio.suspend().catch(()=>{});}},650);}
