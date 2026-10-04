@@ -45,3 +45,9 @@
 .internship-focus{color:#4a5568}
 @media(max-width:900px){.internship-entry{grid-template-columns:160px minmax(0,1fr);gap:26px}}
 @media(max-width:650px){.internship-entry{grid-template-columns:1fr;gap:5px}}
+
+.honors-list{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.honors-list li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;align-items:baseline}
+.honors-list time{font-style:italic;color:#718096;font-variant-numeric:tabular-nums}
+.award-detail{color:#4a5568}
+@media(max-width:650px){.honors-list li{grid-template-columns:42px minmax(0,1fr);gap:12px}}
