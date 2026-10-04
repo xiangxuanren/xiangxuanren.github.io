@@ -1,0 +1,38 @@
+/* Desktop typography: a quieter scale, with the academic body at 15px.
+   Mobile retains its existing reading sizes. */
+@media (min-width:901px){
+ .wordmark{font-size:32px}
+ .site-header nav a,.hero-links{font-size:13px}
+ .header-note{font-size:17px}
+ .hero h1{font-size:clamp(52px,7.8vw,104px)}
+ .hello{font-size:25px}
+ .chinese-name{font-size:20px}
+ .title-hint{font-size:22px}
+ .hero-bio{font-size:15px}
+ .hero-sound,.story-controls button{font-size:11px}
+ .journey-thought p{font-size:23px}
+ .concept-journey text{font-size:17px}
+ .world-question{font-size:21px}
+ .story-timeline button,.story-timeline button:nth-child(2n){font-size:20px}
+ .research-canvas .exhibit-title{font-size:27px}
+ .research-canvas .story-note{font-size:13px}
+ .research-canvas .stage-methods{font-size:11.5px}
+ .academic-body{font-size:15px;line-height:1.8}
+ .academic-body h2{font-size:21px}
+ .section-icon{font-size:18px}
+ .news-list,.academic-collaborators p,.collaborator-list{font-size:15px}
+ .academic-body .pub-topic{font-size:17px}
+ .academic-body .paper h4{font-size:15px;line-height:1.5}
+ .academic-body .authors{font-size:14px}
+ .academic-body .venue{font-size:13px}
+ .academic-body .publication-insight{font-size:15px}
+ .academic-body .publication-keywords{font-size:13px}
+ .academic-heading>a{font-size:13px}
+ .academic-body .media-project-link{font-size:12px}
+ .site-footer,.academic-updated{font-size:11px}
+ .footer-note{font-size:16px}
+}
+/* Preserve the timeline's four-column fit on smaller laptops. */
+@media (min-width:901px) and (max-width:1000px){
+ .story-timeline button,.story-timeline button:nth-child(2n){font-size:15px}
+}

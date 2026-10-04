@@ -48,7 +48,7 @@
   // One scene, four complementary perception tasks, all retained in the final representation.
   function drawIn(el,at,span=2){const length=el.getTotalLength();el.style.strokeDasharray=length;animate(el,[[0,{strokeDashoffset:length}],[at,{strokeDashoffset:length}],[at+span,{strokeDashoffset:0}],[78,{strokeDashoffset:0}],[80,{strokeDashoffset:length}]]);}
   function box(parent,x,y,w,h,d,cls='ink'){return path(parent,`M${x} ${y}h${w}v${h}h${-w}Z m0 0 ${d} ${-d}h${w}v${h}l${-d} ${d}m0 ${-h} ${d} ${-d}M${x+w+d} ${y+h-d}h${-w}l${-d} ${d}M${x+d} ${y-d}v${h}`,cls);}
-  function asset(parent,name,x,y,w,h=w){return node('image',{href:`assets/${name}.svg`,x,y,width:w,height:h},parent);}
+  function asset(parent,name,x,y,w,h=w){return node('image',{href:`assets/${name}.svg?v=20261004-refined`,x,y,width:w,height:h},parent);}
   // Four recognizable task outputs, rather than an unlabeled geometric abstraction.
   const time=$('.idea-time svg');time.setAttribute('viewBox','0 0 220 150');
   const lanes=node('g',{},time);asset(lanes,'car',34,18,27);path(lanes,'M11 51L30 11 M75 51L61 11','blue');path(lanes,'M40 47L44 39m3-9 2-6','trail');text(lanes,45,67,'3D lanes');appear(lanes,0);
@@ -96,21 +96,21 @@
   const meadow=path(backdrop,'M100 214Q281 207 445 215T688 211','blue');drawIn(meadow,4,4);
   const road=path(backdrop,'M653 220Q759 204 920 221 M653 238Q772 222 920 239','ink');drawIn(road,7,5);
   for(let i=0;i<5;i++)drawIn(path(backdrop,`M${675+i*47} 229l22-1`,'trail'),9+i*.3,1);
-  const flowers=node('g',{},garden);asset(flowers,'plant-2',173,138,77);asset(flowers,'flower',188,118,43);appear(flowers,3);
-  const cat=node('g',{},garden);asset(cat,'cat',334,146,68);appear(cat,0);
+  const flowers=node('g',{},garden);asset(flowers,'plant-2',188,167,45);asset(flowers,'flower',196,145,28);appear(flowers,3);
+  const cat=node('g',{},garden);asset(cat,'cat',344,167,48);appear(cat,0);
   const tree=node('g',{},garden);asset(tree,'tree-scene',523,67,164);appear(tree,8);
-  const car=node('g',{},garden);asset(car,'car',760,143,95);appear(car,5);
+  const car=node('g',{},garden);asset(car,'car',735,98,145);appear(car,5);
   const butterfly=node('g',{},garden);asset(butterfly,'butterfly',257,85,40);appear(butterfly,11);
   const sun=node('g',{},garden);asset(sun,'sun',666,18,60);appear(sun,63);
   const cloud=node('g',{},garden);asset(cloud,'cloud',449,26,89);appear(cloud,64);
   const smallPlants=node('g',{},garden);[119,449,677,887].forEach((x,i)=>asset(smallPlants,'plant-2',x,190-i%2*9,29));appear(smallPlants,65);
   // Ground language in the existing cat, flowers and car; labels become relational phrases later.
   const naming=node('g',{},journey);appear(naming,20);
-  const catWord=text(naming,368,126,'cat'),flowerWord=text(naming,210,101,'flowers'),carWord=text(naming,808,141,'car');
+  const catWord=text(naming,368,158,'cat'),flowerWord=text(naming,210,135,'flowers'),carWord=text(naming,808,117,'car');
   const catAnchor=circle(naming,368,211,4,'focus');const flowerAnchor=circle(naming,210,209,4,'focus');const carAnchor=circle(naming,806,214,4,'focus');
   const utterance=text(naming,350,53,'“the cat beside the flowers”');
-  const reference=path(naming,'M345 62Q332 85 365 115','gold');drawIn(reference,23,3);
-  const target=node('rect',{x:323,y:138,width:91,height:80,rx:6,class:'gold'},naming);appear(target,25);
+  const reference=path(naming,'M345 62Q332 111 365 145','gold');drawIn(reference,23,3);
+  const target=node('rect',{x:323,y:157,width:91,height:61,rx:6,class:'gold'},naming);appear(target,25);
   animate(target,[[0,{x:'323px',width:'91px'}],[34,{x:'323px',width:'91px'}],[43,{x:'331px',width:'74px'}],[78,{x:'331px',width:'74px'}],[80,{x:'323px',width:'91px'}]]);
   // Meaningful relations grow within the scene instead of replacing it with a graph.
   const relations=node('g',{},journey);appear(relations,46);
@@ -133,8 +133,8 @@
   const futures=node('g',{},journey);appear(futures,64);
   const safe=path(futures,'M379 202Q471 170 574 198','gold');drawIn(safe,64,5);
   const explore=path(futures,'M379 208Q524 259 721 211','blue');drawIn(explore,66,6);
-  const possibleCatA=node('g',{},futures);asset(possibleCatA,'cat',340,159,54);appear(possibleCatA,64,.28);pose(possibleCatA,[[0,'translate(0,0)'],[64,'translate(0,0)'],[69,'translate(206px,-7px)'],[78,'translate(206px,-7px)'],[80,'translate(0,0)']]);
-  const possibleCatB=node('g',{},futures);asset(possibleCatB,'cat',340,159,54);appear(possibleCatB,66,.2);pose(possibleCatB,[[0,'translate(0,0)'],[66,'translate(0,0)'],[72,'translate(355px,8px)'],[78,'translate(355px,8px)'],[80,'translate(0,0)']]);
+  const possibleCatA=node('g',{},futures);asset(possibleCatA,'cat',346,174,42);appear(possibleCatA,64,.28);pose(possibleCatA,[[0,'translate(0,0)'],[64,'translate(0,0)'],[69,'translate(206px,-7px)'],[78,'translate(206px,-7px)'],[80,'translate(0,0)']]);
+  const possibleCatB=node('g',{},futures);asset(possibleCatB,'cat',346,174,42);appear(possibleCatB,66,.2);pose(possibleCatB,[[0,'translate(0,0)'],[66,'translate(0,0)'],[72,'translate(355px,8px)'],[78,'translate(355px,8px)'],[80,'translate(0,0)']]);
   const memory=path(futures,'M347 214L325 216m-12 1-10 1m-10 1-8 0','trail');drawIn(memory,64,2);
   const unity=path(journey,'M128 252C45 216 68 69 151 48C313-9 781-12 900 83C952 132 943 233 875 260C654 265 324 263 128 252','gold');drawIn(unity,70,6);animate(unity,[[0,{opacity:0}],[70,{opacity:0}],[73,{opacity:.35}],[77,{opacity:.45}],[78,{opacity:.45}],[80,{opacity:0}]]);
   const revisionSignal=circle(journey,940,186,3,'focus');transient(revisionSignal,72,78);pose(revisionSignal,[[0,'translate(0,0)'],[73,'translate(0,0)'],[75,'translate(-235px,-70px)'],[77,'translate(-572px,22px)'],[80,'translate(0,0)']]);
