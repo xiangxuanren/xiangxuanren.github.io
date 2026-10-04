@@ -36,3 +36,12 @@
 .paper-figure-collage .paper-figure-pair img{width:100%;height:100%;max-height:none;aspect-ratio:1.15;object-fit:contain;padding:3px;background:#fff}
 
 .authors sup{font-size:.75em;line-height:0}.equal-contribution{font-style:normal;white-space:nowrap}
+
+/* Insights sit one step below the author line in the type hierarchy. */
+.academic-body .publication-insight{font-size:14px}
+.internship-entry{display:grid;grid-template-columns:184px minmax(0,1fr);gap:38px;align-items:baseline}
+.academic-body .internship-entry p{margin:0}
+.internship-date{font-style:italic;white-space:nowrap;color:#718096}
+.internship-focus{color:#4a5568}
+@media(max-width:900px){.internship-entry{grid-template-columns:160px minmax(0,1fr);gap:26px}}
+@media(max-width:650px){.internship-entry{grid-template-columns:1fr;gap:5px}}
