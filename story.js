@@ -12,7 +12,28 @@
     return a[to]+fraction*(b[to]-a[to]);
   }
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');let paused=reduce.matches,visible=true,inView=true,raf=0,last=-1;
-  const beats=[{at:0},{at:20},{at:32},{at:46},{at:62}];
+  const beats=[
+  {
+    "at": 0,
+    "quote": "Perception reveals structure across space and time."
+  },
+  {
+    "at": 20,
+    "quote": "A shared visual vocabulary gives perception a language for thought."
+  },
+  {
+    "at": 32,
+    "quote": "Reasoning takes shape when models can act on what they see."
+  },
+  {
+    "at": 46,
+    "quote": "Understanding connects things, their relations, and how they change."
+  },
+  {
+    "at": 62,
+    "quote": "Imagine how the world unfolds, and learn through interaction."
+  }
+];
   function node(tag,attrs,parent){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e;}
   function text(parent,x,y,label,cls=''){const e=node('text',{x,y,'text-anchor':'middle',class:cls},parent);e.textContent=label;return e;}
   function path(parent,d,cls='ink'){return node('path',{d,class:cls},parent);}
@@ -140,7 +161,7 @@
   });
   const origin=document.timeline.currentTime;animations.forEach(a=>a.startTime=origin);
   function render(){const t=mapTime(((Number(clock.currentTime)||0)%duration)/1000,1,0),index=beats.findLastIndex(b=>t>=b.at);
-    if(index!==last){scene.dataset.beat=String(index);last=index;}
+    if(index!==last){$('#journey-quote').textContent=beats[index].quote;scene.dataset.beat=String(index);last=index;}
     researchSlides.forEach(([selector,start,end])=>{const active=t>=start&&t<end;const slide=$(selector);slide.setAttribute('aria-hidden',String(!active));slide.inert=!active;slide.style.pointerEvents=active?'auto':'none';});
     $('.world-question span').textContent=t<71?'Imagine worlds\nthat respond.':'Learn through\ninteraction.';
     latent.setAttribute('transform',`rotate(${t>=62?Math.sin((t-62)*.6)*4:0} 116 63)`);
