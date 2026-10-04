@@ -12,28 +12,7 @@
     return a[to]+fraction*(b[to]-a[to]);
   }
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');let paused=reduce.matches,visible=true,inView=true,raf=0,last=-1;
-  const beats=[
-  {
-    "at": 0,
-    "quote": "Intelligence begins with seeing.\nPerception turns observations into structure across space and time."
-  },
-  {
-    "at": 20,
-    "quote": "Intelligence needs a way to represent what it sees.\nA shared representation turns perception into a language for thought."
-  },
-  {
-    "at": 32,
-    "quote": "Reasoning extends from language into a visual space it can act on.\nThere, models can reshape what they perceive as they think."
-  },
-  {
-    "at": 46,
-    "quote": "Understanding goes beyond recognizing things.\nIt reveals how they relate, change, and affect one another."
-  },
-  {
-    "at": 62,
-    "quote": "Intelligence grows by anticipating how the world may unfold.\nPredict what could happen, and learn through interaction."
-  }
-];
+  const beats=[{at:0},{at:20},{at:32},{at:46},{at:62}];
   function node(tag,attrs,parent){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e;}
   function text(parent,x,y,label,cls=''){const e=node('text',{x,y,'text-anchor':'middle',class:cls},parent);e.textContent=label;return e;}
   function path(parent,d,cls='ink'){return node('path',{d,class:cls},parent);}
@@ -161,12 +140,11 @@
   });
   const origin=document.timeline.currentTime;animations.forEach(a=>a.startTime=origin);
   function render(){const t=mapTime(((Number(clock.currentTime)||0)%duration)/1000,1,0),index=beats.findLastIndex(b=>t>=b.at);
-    if(index!==last){$('#journey-quote').textContent=beats[index].quote;scene.dataset.beat=String(index);last=index;}
+    if(index!==last){scene.dataset.beat=String(index);last=index;}
     researchSlides.forEach(([selector,start,end])=>{const active=t>=start&&t<end;const slide=$(selector);slide.setAttribute('aria-hidden',String(!active));slide.inert=!active;slide.style.pointerEvents=active?'auto':'none';});
     $('.world-question span').textContent=t<71?'Imagine worlds\nthat respond.':'Learn through\ninteraction.';
     latent.setAttribute('transform',`rotate(${t>=62?Math.sin((t-62)*.6)*4:0} 116 63)`);
     const actionStep=t<37?0:t<41?1:t<45?2:3;actionWords.forEach((word,i)=>{word.style.opacity=i>actionStep?'.18':i===actionStep?'1':'.65';});
-    $('.journey-thought').style.setProperty('--speaker',`${Math.max(8,Math.min(92,t/77*100))}%`);
     buttons.forEach((b,i)=>{
       const start=chapters[i],end=chapters[i+1]||78,revealed=t>=start&&t<79.2;
       b.setAttribute('aria-pressed',String(t>=start&&t<(chapters[i+1]||T)));
