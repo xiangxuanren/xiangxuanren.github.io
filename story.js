@@ -23,7 +23,7 @@
   },
   {
     "at": 32,
-    "quote": "Reasoning takes shape when models can act on what they see."
+    "quote": "Visual reasoning takes shape when models can act on what they see."
   },
   {
     "at": 46,
