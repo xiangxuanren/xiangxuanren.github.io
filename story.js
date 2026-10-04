@@ -96,39 +96,39 @@
   const meadow=path(backdrop,'M100 214Q281 207 445 215T688 211','blue');drawIn(meadow,4,4);
   const road=path(backdrop,'M653 220Q759 204 920 221 M653 238Q772 222 920 239','ink');drawIn(road,7,5);
   for(let i=0;i<5;i++)drawIn(path(backdrop,`M${675+i*47} 229l22-1`,'trail'),9+i*.3,1);
-  const flowers=node('g',{},garden);asset(flowers,'plant-2',188,167,45);asset(flowers,'flower',196,145,28);appear(flowers,3);
+  const flowers=node('g',{},garden);asset(flowers,'plant-2',108,167,45);asset(flowers,'flower',116,145,28);appear(flowers,3);
   const cat=node('g',{},garden);asset(cat,'cat',344,167,48);appear(cat,0);
   const tree=node('g',{},garden);asset(tree,'tree-scene',523,67,164);appear(tree,8);
   const car=node('g',{},garden);asset(car,'car',735,98,145);appear(car,5);
-  const butterfly=node('g',{},garden);asset(butterfly,'butterfly',257,85,40);appear(butterfly,11);
+  const butterfly=node('g',{},garden);asset(butterfly,'butterfly',177,85,40);appear(butterfly,11);
   const sun=node('g',{},garden);asset(sun,'sun',666,18,60);appear(sun,63);
   const cloud=node('g',{},garden);asset(cloud,'cloud',449,26,89);appear(cloud,64);
-  const smallPlants=node('g',{},garden);[119,449,677,887].forEach((x,i)=>asset(smallPlants,'plant-2',x,190-i%2*9,29));appear(smallPlants,65);
+  const smallPlants=node('g',{},garden);[215,449,677,887].forEach((x,i)=>asset(smallPlants,'plant-2',x,190-i%2*9,29));appear(smallPlants,65);
   // Ground language in the existing cat, flowers and car; labels become relational phrases later.
   const naming=node('g',{},journey);appear(naming,20);
-  const catWord=text(naming,368,158,'cat'),flowerWord=text(naming,210,135,'flowers'),carWord=text(naming,808,117,'car');
-  const catAnchor=circle(naming,368,211,4,'focus');const flowerAnchor=circle(naming,210,209,4,'focus');const carAnchor=circle(naming,806,214,4,'focus');
+  const catWord=text(naming,368,158,'cat'),flowerWord=text(naming,130,135,'flowers'),carWord=text(naming,808,117,'car');
+  const catAnchor=circle(naming,368,211,4,'focus');const flowerAnchor=circle(naming,130,209,4,'focus');const carAnchor=circle(naming,806,214,4,'focus');
   const utterance=text(naming,350,53,'“the cat beside the flowers”');
   const reference=path(naming,'M345 62Q332 111 365 145','gold');drawIn(reference,23,3);
   const target=node('rect',{x:323,y:157,width:91,height:61,rx:6,class:'gold'},naming);appear(target,25);
   animate(target,[[0,{x:'323px',width:'91px'}],[34,{x:'323px',width:'91px'}],[43,{x:'331px',width:'74px'}],[78,{x:'331px',width:'74px'}],[80,{x:'323px',width:'91px'}]]);
   // Meaningful relations grow within the scene instead of replacing it with a graph.
   const relations=node('g',{},journey);appear(relations,46);
-  const beside=path(relations,'M250 177Q291 148 330 178','gold');drawIn(beside,46,3);const besideWord=text(relations,292,153,'beside');appear(besideWord,47);
-  const above=path(relations,'M265 111Q233 118 227 142','blue');drawIn(above,49,2);const aboveWord=text(relations,295,91,'above');appear(aboveWord,49);
+  const beside=path(relations,'M170 177Q250 148 330 178','gold');drawIn(beside,46,3);const besideWord=text(relations,250,153,'beside');appear(besideWord,47);
+  const above=path(relations,'M185 111Q153 118 147 142','blue');drawIn(above,49,2);const aboveWord=text(relations,215,91,'above');appear(aboveWord,49);
   const under=path(relations,'M405 185Q469 161 570 184','gold');drawIn(under,51,3);const shadeWord=text(relations,478,170,'left of the tree');appear(shadeWord,52);
   const onRoad=path(relations,'M805 235v15h73','blue');drawIn(onRoad,54,2);const roadWord=text(relations,876,267,'on the road');appear(roadWord,55);
   // The world stage links nature, motion, hidden state and counterfactual interaction.
   const whole=node('g',{},journey);appear(whole,62);
-  const growth=path(whole,'M678 69Q537 5 226 121','gold');drawIn(growth,63,4);const growthWord=text(whole,562,18,'light → growth');appear(growthWord,64);
+  const growth=path(whole,'M678 69Q497 5 146 121','gold');drawIn(growth,63,4);const growthWord=text(whole,562,18,'light → growth');appear(growthWord,64);
   const rain=path(whole,'M478 89l-9 18m22-15-9 18m-12-7-9 18','blue');appear(rain,65,.7);
-  const water=path(whole,'M471 113Q381 79 235 144','blue');drawIn(water,66,3);
+  const water=path(whole,'M471 113Q341 79 155 144','blue');drawIn(water,66,3);
   const futureRoute=path(whole,'M406 214Q484 226 552 205Q617 188 682 213','trail');drawIn(futureRoute,67,4);const routeWord=text(whole,516,254,'same world · different actions');appear(routeWord,68);
   const crossing=path(whole,'M693 213Q737 152 776 185','gold');drawIn(crossing,70,3);const futureWord=text(whole,771,109,'what could follow?');appear(futureWord,71);
 
   [utterance,shadeWord,roadWord,routeWord,futureWord].forEach(e=>e.classList.add('detail-label'));
   [catWord,flowerWord,carWord,besideWord,aboveWord,growthWord].forEach(e=>e.classList.add('core-label'));
-  const compact=matchMedia('(max-width:650px)');const resizeWorld=()=>journey.setAttribute('viewBox',compact.matches?'100 -20 830 320':'0 0 1000 280');compact.addEventListener('change',resizeWorld);resizeWorld();
+  const compact=matchMedia('(max-width:650px)');const resizeWorld=()=>journey.setAttribute('viewBox',compact.matches?'50 -20 880 320':'0 0 1000 280');compact.addEventListener('change',resizeWorld);resizeWorld();
   // World finale: the observer pauses, asks a counterfactual, and reads a shared world.
   const futures=node('g',{},journey);appear(futures,64);
   const safe=path(futures,'M379 202Q471 170 574 198','gold');drawIn(safe,64,5);
@@ -148,7 +148,7 @@
   const flutter=[];for(let t=0;t<=80;t+=2){flutter.push([t,`translate(${t<12?0:Math.sin(t)*11}px,${t<12?0:Math.cos(t)*7}px) rotate(${Math.sin(t)*6}deg)`]);}pose(butterfly,flutter);
   pose(cat,[[0,'translate(0,0)'],[14,'translate(0,0)'],[16,'translate(7px,-3px)'],[18,'translate(0,0)'],[67,'translate(0,0)'],[70,'translate(10px,-3px)'],[74,'translate(0,0)'],[80,'translate(0,0)']]);
   pose(car,[[0,'translate(-30px,0)'],[5,'translate(-30px,0)'],[13,'translate(0,0)'],[64,'translate(0,0)'],[71,'translate(17px,-1px)'],[76,'translate(0,0)'],[80,'translate(-30px,0)']]);
-  pose(flowers,[[0,'rotate(0deg)'],[20,'rotate(0deg)'],[40,'rotate(1deg)'],[62,'rotate(0deg)'],[67,'rotate(-2deg)'],[72,'rotate(2deg)'],[78,'rotate(0deg)'],[80,'rotate(0deg)']]);flowers.style.transformOrigin='210px 213px';
+  pose(flowers,[[0,'rotate(0deg)'],[20,'rotate(0deg)'],[40,'rotate(1deg)'],[62,'rotate(0deg)'],[67,'rotate(-2deg)'],[72,'rotate(2deg)'],[78,'rotate(0deg)'],[80,'rotate(0deg)']]);flowers.style.transformOrigin='130px 213px';
 
   const clock=animate(scene,[[0,{opacity:1}],[80,{opacity:1}]]);
   animate('.observer-actor',[[0,{left:'3%',opacity:1}],[20,{left:'25%',opacity:1}],[46,{left:'55%',opacity:1}],[62,{left:'76%',opacity:1}],[64,{left:'85%',opacity:1}],[76,{left:'85%',opacity:1}],[77,{left:'90%',opacity:1}],[78.5,{left:'93%',opacity:0}],[79,{left:'3%',opacity:0}],[80,{left:'3%',opacity:1}]]);
