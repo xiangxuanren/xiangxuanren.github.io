@@ -101,7 +101,7 @@ const papers=[
     "key": "litefusion",
     "figures": [{"src": "assets/publications/litefusion-fig6.webp", "alt": "LiteFusion Figure 6: learned branch weight distributions and geometry-guided feature response maps", "width": 1860, "height": 436}],
     "method": "LiteFusion",
-    "insight": "LiDAR can supply geometry directly to a camera detector, improving 3D detection without a separate point-cloud backbone while retaining the ability to operate when LiDAR is missing.",
+    "insight": "A vision model can gain multimodal 3D perception capabilities through lightweight geometric adaptation while retaining its ability to operate on images alone.",
     "keywords": [
       "3D object detection",
       "Camera–LiDAR fusion",
