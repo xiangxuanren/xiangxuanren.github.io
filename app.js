@@ -92,10 +92,10 @@ const papers=[
     "category": "Multimodal Large Language Models & World Model"
   },
   {
-    "year": 2025,
+    "year": 2026,
     "title": "LiteFusion: Taming 3D Object Detectors from Vision-Based to Multi-Modal with Minimal Adaptation",
     "authors": "X Ren, Z Wang, P Tang, G Wang, J Zheng, C Ma",
-    "venue": "Preprint · 2025",
+    "venue": "IEEE TITS 2026",
     "id": "eQOLeE2rZwMC",
     "paper": "https://arxiv.org/abs/2512.20217",
     "key": "litefusion",
