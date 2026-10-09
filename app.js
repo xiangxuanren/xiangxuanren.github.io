@@ -99,6 +99,7 @@ const papers=[
     "id": "eQOLeE2rZwMC",
     "paper": "https://arxiv.org/abs/2512.20217",
     "key": "litefusion",
+    "figures": [{"src": "assets/publications/litefusion-fig6.webp", "alt": "LiteFusion Figure 6: learned branch weight distributions and geometry-guided feature response maps", "width": 1860, "height": 436}],
     "method": "LiteFusion",
     "insight": "LiDAR can supply geometry directly to a camera detector, improving 3D detection without a separate point-cloud backbone while retaining the ability to operate when LiDAR is missing.",
     "keywords": [
@@ -278,7 +279,7 @@ for(const category of categories){
   const url=paper.paper||paper.project;
   const [imageWidth,imageHeight]=figureSizes[image]||[560,250];
   const still='<a class="paper-figure" href="'+image+'" target="_blank" rel="noopener" aria-label="View '+escapeHtml(paper.method)+' figure"><img src="'+preview(image)+'" alt="'+escapeHtml(paper.method)+(paper.key==='dualattention'?' conceptual method diagram':' method overview')+'" width="'+imageWidth+'" height="'+imageHeight+'" loading="lazy" decoding="async"></a>';
-  const detailFigures=paper.figures?'<div class="paper-figure-pair">'+paper.figures.map(figure=>'<a class="paper-figure" href="'+escapeHtml(figure.src)+'" target="_blank" rel="noopener" aria-label="'+escapeHtml(figure.alt)+'"><img src="'+escapeHtml(preview(figure.src))+'" alt="'+escapeHtml(figure.alt)+'" width="'+figure.width+'" height="'+figure.height+'" loading="lazy" decoding="async"></a>').join('')+'</div>':'';
+  const detailFigures=paper.figures?'<div class="'+(paper.figures.length===1?'paper-figure-single':'paper-figure-pair')+'">'+paper.figures.map(figure=>'<a class="paper-figure" href="'+escapeHtml(figure.src)+'" target="_blank" rel="noopener" aria-label="'+escapeHtml(figure.alt)+'"><img src="'+escapeHtml(preview(figure.src))+'" alt="'+escapeHtml(figure.alt)+'" width="'+figure.width+'" height="'+figure.height+'" loading="lazy" decoding="async"></a>').join('')+'</div>':'';
   const media=detailFigures?'<div class="paper-media-stack paper-figure-collage">'+still+detailFigures+'</div>':paper.video?'<div class="paper-media-stack">'+still+'<div class="paper-figure paper-video"><video muted loop playsinline controls preload="none" poster="'+escapeHtml(preview(paper.poster))+'" data-src="'+escapeHtml(paper.video)+'" aria-label="'+escapeHtml(paper.method)+' research demonstration"></video></div>'+'</div>':still;
   item.innerHTML=media+'<div class="paper-content"><h4>'+externalLink(url,escapeHtml(paper.title))+'</h4><p class="authors">'+authors+'</p><p class="venue '+(paper.venue.startsWith('Preprint')?'preprint':'')+'">'+escapeHtml(paper.venue)+contributionNote+'</p><p class="publication-insight">'+escapeHtml(paper.insight)+'</p><div class="publication-keywords" aria-label="Keywords">'+paper.keywords.map(keyword=>'<span class="keyword">'+escapeHtml(keyword)+'</span>').join('')+'</div></div>';
   const video=item.querySelector('video');
